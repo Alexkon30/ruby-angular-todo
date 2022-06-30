@@ -18,7 +18,7 @@ class ProjectController < ApplicationController
     @todo = Todo.find(params[:todoid])
     @todo.isCompleted = !@todo.isCompleted
     @todo.save
-    render :json => {:success => @todo}
+    render :json => {:success => ture, :todo => @todo}
   end
 
   def deleteAll
