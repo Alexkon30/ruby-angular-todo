@@ -3,7 +3,7 @@ class TodosController < ApplicationController
 
   def createTodo
     #POST /todos body: {"text": "test3", "projectid": "0", "title": "job"}
-    if params[:projectid] != '0'
+    if params[:projectid] != 0
       @project = Project.find(params[:projectid])  
     else
       @project = Project.new(title: params[:title])
@@ -14,6 +14,6 @@ class TodosController < ApplicationController
     @todo.project_id = @project.id
     @todo.save
 
-    render :json => {:success => true}
+    render :json => {:success => true, :project => @project, :todo => @todo}
   end
 end
